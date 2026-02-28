@@ -140,15 +140,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Vulkan.cpp" />
-    <ClCompile Include="Window.cpp" />
+    <ClCompile Include="VulkanCore.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Helper.h" />
-    <ClInclude Include="Includes.h" />
     <ClInclude Include="tiny_obj_loader.h" />
-    <ClInclude Include="Window.h" />
+    <ClInclude Include="VulkanCore.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders.targets" />
+    <None Include="shaders\shader.frag" />
+    <None Include="shaders\shader.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <Import Project="Shaders.targets" />
 </Project>

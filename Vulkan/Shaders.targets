@@ -1,0 +1,18 @@
+<Project>
+    <ItemGroup>
+    <ShaderFiles Include="Shaders\*.vert;Shaders\*.frag" />
+    </ItemGroup>
+
+	<Target Name="CompileShaders" BeforeTargets="Build">
+		<MakeDir Directories="$(OutDir)Shaders" />
+		<Exec Command="glslc.exe %(ShaderFiles.FullPath) -o $(OutDir)Shaders\%(ShaderFiles.Filename)%(ShaderFiles.Extension).spv" />
+	</Target>
+
+	<Target Name="CopyShaders" AfterTargets="Build">
+		<ItemGroup>
+			<SPVFiles Include="$(OutDir)Shaders\*.spv" />
+		</ItemGroup>
+
+		<Copy SourceFiles="@(SPVFiles)" DestinationFolder="Shaders\" />
+	</Target>
+</Project>
